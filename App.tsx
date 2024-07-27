@@ -1,20 +1,61 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar"
+import { Provider as PaperProvider } from "react-native-paper"
+
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
+  NavigationContainer
+} from "@react-navigation/native"
+
+import {
+  useFonts as useFontOlswald,
+  Oswald_400Regular
+} from "@expo-google-fonts/oswald"
+import {
+  useFonts as useFontLato,
+  Lato_400Regular,
+  Lato_700Bold
+} from "@expo-google-fonts/lato"
+
+import { useColorScheme } from "@/src/hooks/useColorScheme"
+import { MD3DarkThemeCustomized, MD3LightThemeCustomized } from "@/src/theme"
+import TabBar from "./src/components/tabbar/tabbar.component"
+import { PlacesContextProvider } from "./src/services/places/places.context"
+import { LocationContextProvider } from "./src/services/location/location.context"
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const colorScheme = useColorScheme()
+  const isDark = colorScheme === "dark"
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  const [oswaldLoaded] = useFontOlswald({
+    Oswald_400Regular
+  })
+
+  const [latoLoaded] = useFontLato({
+    Lato_400Regular,
+    Lato_700Bold
+  })
+
+  if (!oswaldLoaded || !latoLoaded) {
+    return null
+  }
+  return (
+    <>
+      <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
+        <PaperProvider
+          theme={isDark ? MD3DarkThemeCustomized : MD3LightThemeCustomized}
+        >
+          <LocationContextProvider>
+            <PlacesContextProvider>
+              <NavigationContainer>
+                <TabBar />
+              </NavigationContainer>
+            </PlacesContextProvider>
+          </LocationContextProvider>
+        </PaperProvider>
+      </ThemeProvider>
+      <StatusBar style='auto' />
+    </>
+  )
+}

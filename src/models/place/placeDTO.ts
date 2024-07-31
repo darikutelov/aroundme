@@ -1,30 +1,30 @@
-import { Geometry } from "../locations/location"
+import { Geometry } from "../location/location"
 
-export type Place = {
+export type PlaceDTO = {
   name: string
   icon?: string
   photos: Photo[]
   imageUrl?: string
   address?: string
-  openningHours?: OpeningHours
+  opening_hours?: OpeningHours
   isOpenNow?: boolean
   rating?: number
   isClosedTemporarily?: boolean
   placeId?: string
   reference: string
-  businessStatus?: string
+  business_status?: string
   geometry: Geometry
-  userRatingsTotal?: number
+  user_ratings_total?: number
   vicinity: string
 }
 
 export type OpeningHours = {
-  openNow: boolean
+  open_now: boolean
 }
 
 export type Photo = {
   height: number
-  htmlAttributions: any[]
-  photoReference: string
+  html_attributions: any[]
+  photo_reference: string
   width: number
 }

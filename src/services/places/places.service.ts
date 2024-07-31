@@ -1,7 +1,7 @@
 import camelize from "camelize-ts"
-import { Place } from "@/src/models/places/place"
+import { Place } from "@/src/models/place/place"
 import { mockImages, mocks, ResponseObj } from "./mock"
-import { PlaceDTO } from "@/src/models/places/placeDTO"
+import { PlaceDTO } from "@/src/models/place/placeDTO"
 
 export function placesTransform(places: PlaceDTO[]): Place[] {
   let mappedPlaces: PlaceDTO[] = places.map((place) => {

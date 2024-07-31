@@ -1,4 +1,4 @@
-import { LocationsMap } from "@/src/models/locations/location"
+import { LocationsMap } from "@/src/models/location/location"
 
 export const locations: LocationsMap = {
   antwerp: {

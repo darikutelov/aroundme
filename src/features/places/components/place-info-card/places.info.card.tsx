@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native"
 import { Card } from "react-native-paper"
 
-import { Place } from "@/src/models/places/place"
+import { Place } from "@/src/models/place/place"
 import { ThemedText } from "@/src/components/ThemedText"
 import { theme } from "@/src/theme"
 import { useThemeColor } from "@/src/hooks/useThemeColor"
@@ -12,7 +12,7 @@ type Props = {
   place: Place
 }
 
-export default function PlaceInfoCard({ place }: Props) {
+export function PlaceInfoCard({ place }: Props) {
   const {
     name,
     icon,

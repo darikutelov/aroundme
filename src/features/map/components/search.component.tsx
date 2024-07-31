@@ -6,7 +6,7 @@ import { useLocationContext } from "@/src/services/location/location.context"
 import { theme } from "@/src/theme"
 import { useColorScheme } from "@/src/hooks/useColorScheme"
 
-export const Search = () => {
+export const MapSearch = () => {
   const { keyword, search } = useLocationContext()
   const [searchKeyword, setSearchKeyword] = useState(keyword)
 
@@ -19,6 +19,7 @@ export const Search = () => {
     <View style={styles.container}>
       <Searchbar
         placeholder='Search for a location'
+        icon='map'
         value={searchKeyword}
         onSubmitEditing={() => {
           search(searchKeyword)
@@ -37,7 +38,11 @@ export const Search = () => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: theme.space[3]
+    padding: theme.space[3],
+    position: "absolute",
+    zIndex: 999,
+    top: 35,
+    width: "100%"
   },
   search: {
     borderRadius: 8

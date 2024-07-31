@@ -1,28 +1,29 @@
+import { ParamListBase, RouteProp } from "@react-navigation/native"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import MaterialIcons from "@expo/vector-icons/MaterialIcons"
 
-import MapScreen from "@/src/features/map/screens/map.screen"
-import PlacesScreen from "@/src/features/places/screens/places.screen"
-import SettingsScreen from "@/src/features/settings/screens/settings.screen"
-import { ParamListBase, RouteProp } from "@react-navigation/native"
+import { PlacesNavigator } from "@/src/navigation/places.navigator"
+import { MapScreen } from "@/src/features/map/screens/map.screen"
+import { SettingsScreen } from "@/src/features/settings/screens/settings.screen"
 import { useThemeColor } from "@/src/hooks/useThemeColor"
 import { theme } from "@/src/theme"
 
-const TAB_ICONS: { [key: string]: "icecream" | "map" | "settings" } = {
-  Places: "icecream",
+const TAB_ICONS: { [key: string]: "place" | "map" | "settings" } = {
+  Places: "place",
   Map: "map",
   Settings: "settings"
 }
 
-export default function TabBar() {
+export const TabBar = () => {
   const Tab = createBottomTabNavigator()
   const tabBarBackground = useThemeColor({}, "background")
   const iconColor = useThemeColor({}, "icon")
   const iconActiveColor = useThemeColor({}, "tabIconSelected")
+
   return (
     <Tab.Navigator screenOptions={screenOptions}>
-      <Tab.Screen name='Places' component={PlacesScreen} />
       <Tab.Screen name='Map' component={MapScreen} />
+      <Tab.Screen name='Places' component={PlacesNavigator} />
       <Tab.Screen name='Settings' component={SettingsScreen} />
     </Tab.Navigator>
   )

@@ -1,4 +1,4 @@
-import { Location } from "@/src/models/locations/location"
+import { LocationCtx } from "@/src/models/location/location"
 import {
   createContext,
   ReactNode,
@@ -11,7 +11,7 @@ import { locationRequest, locationTransform } from "./location.service"
 type LocationContextType = {
   isLoading: boolean
   error: string | null
-  location: Location
+  location: LocationCtx
   search: (searchKeyword: string) => Promise<void>
   keyword: string
 }
@@ -19,7 +19,14 @@ type LocationContextType = {
 const defaultValues: LocationContextType = {
   isLoading: false,
   error: "",
-  location: { lat: 37.7749295, lng: -122.4194155 },
+  location: {
+    lat: 37.7749295,
+    lng: -122.4194155,
+    viewport: {
+      northeast: { lat: 37.812, lng: -122.3482 },
+      southwest: { lat: 37.70339999999999, lng: -122.527 }
+    }
+  },
   search: () => Promise.resolve(),
   keyword: ""
 }
@@ -33,7 +40,7 @@ export const LocationContextProvider = ({
 }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [location, setLocation] = useState<Location>(defaultValues.location)
+  const [location, setLocation] = useState<LocationCtx>(defaultValues.location)
   const [keyword, setKeyword] = useState<string>("san francisco")
 
   useEffect(() => {

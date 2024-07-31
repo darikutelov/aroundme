@@ -1,5 +1,5 @@
 import { ThemedText } from "@/src/components/ThemedText"
 
-export default function SettingsScreen() {
+export const SettingsScreen = () => {
   return <ThemedText>Settings</ThemedText>
 }

@@ -1,11 +1,11 @@
+import "./gesture-handler"
 import { StatusBar } from "expo-status-bar"
 import { Provider as PaperProvider } from "react-native-paper"
 
 import {
   DarkTheme,
   DefaultTheme,
-  ThemeProvider,
-  NavigationContainer
+  ThemeProvider
 } from "@react-navigation/native"
 
 import {
@@ -20,9 +20,9 @@ import {
 
 import { useColorScheme } from "@/src/hooks/useColorScheme"
 import { MD3DarkThemeCustomized, MD3LightThemeCustomized } from "@/src/theme"
-import TabBar from "./src/components/tabbar/tabbar.component"
 import { PlacesContextProvider } from "./src/services/places/places.context"
 import { LocationContextProvider } from "./src/services/location/location.context"
+import { Navigation } from "@/src/navigation"
 
 export default function App() {
   const colorScheme = useColorScheme()
@@ -48,9 +48,7 @@ export default function App() {
         >
           <LocationContextProvider>
             <PlacesContextProvider>
-              <NavigationContainer>
-                <TabBar />
-              </NavigationContainer>
+              <Navigation />
             </PlacesContextProvider>
           </LocationContextProvider>
         </PaperProvider>

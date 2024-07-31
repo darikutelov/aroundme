@@ -47,7 +47,9 @@ export default function PlacesInfoCardDetails({
         <Spacer size='large' position='Right' />
         {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
         <Spacer size='large' position='Right' />
-        <Image source={{ uri: icon }} style={{ width: 20, height: 20 }} />
+        {icon && (
+          <Image source={{ uri: icon }} style={{ width: 20, height: 20 }} />
+        )}
       </ThemedText>
     </ThemedView>
   )

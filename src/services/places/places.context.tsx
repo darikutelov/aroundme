@@ -5,7 +5,7 @@ import {
   useEffect,
   useState
 } from "react"
-import { Place } from "@/src/models/places/place"
+import { Place } from "@/src/models/place/place"
 import { placesRequest, placesTransform } from "./places.service"
 import { useLocationContext } from "../location/location.context"
 

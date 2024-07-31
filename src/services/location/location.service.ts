@@ -1,7 +1,7 @@
 import camelize from "camelize-ts"
 
 import { locations } from "./locations.mock"
-import { LocationDetails } from "@/src/models/locations/location"
+import { LocationDetails } from "@/src/models/location/location"
 
 export const locationRequest = (
   searchTerm: string
@@ -20,5 +20,5 @@ export const locationTransform = (result: LocationDetails) => {
   const { geometry } = formattedResponse.results[0]
   const { lat, lng } = geometry.location
 
-  return { lat, lng }
+  return { lat, lng, viewport: geometry.viewport }
 }

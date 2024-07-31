@@ -25,3 +25,9 @@ export type Location = {
   lng: number
   lat: number
 }
+
+export type LocationCtx = {
+  lng: number
+  lat: number
+  viewport: Viewport
+}

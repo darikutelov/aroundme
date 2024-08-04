@@ -9,7 +9,7 @@ export const colors = {
     icon: "#57CC99",
     tabIconDefault: "#687076",
     tabIconSelected: tintColorLight,
-    secondarySystemBackground: "#F2F2F7FF", // .secondarySystemBackground
+    secondarySystemBackground: "#F2F2F7", // .secondarySystemBackground
     error: "#D0421B",
     primary: "#57CC99"
   },
@@ -20,7 +20,7 @@ export const colors = {
     icon: "#57CC99",
     tabIconDefault: "#9BA1A6",
     tabIconSelected: tintColorDark,
-    secondarySystemBackground: "#1C1C1EFF", // .secondarySystemBackground
+    secondarySystemBackground: "#1C1C1E", // .secondarySystemBackground
     error: "#D0421B",
     primary: "#57CC99"
   }

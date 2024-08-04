@@ -6,7 +6,13 @@ import { theme } from "@/src/theme"
 export type ThemedTextProps = TextProps & {
   lightColor?: string
   darkColor?: string
-  type?: "default" | "title" | "defaultSemiBold" | "subtitle" | "link"
+  type?:
+    | "default"
+    | "title"
+    | "defaultSemiBold"
+    | "subtitle"
+    | "caption"
+    | "link"
 }
 
 export function ThemedText({
@@ -26,6 +32,7 @@ export function ThemedText({
         type === "title" ? styles.title : undefined,
         type === "defaultSemiBold" ? styles.defaultSemiBold : undefined,
         type === "subtitle" ? styles.subtitle : undefined,
+        type === "caption" ? styles.caption : undefined,
         type === "link" ? styles.link : undefined,
         style
       ]}
@@ -53,6 +60,10 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 20,
+    fontWeight: "bold"
+  },
+  caption: {
+    fontSize: 12,
     fontWeight: "bold"
   },
   link: {

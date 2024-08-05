@@ -17,12 +17,12 @@ type Props = {
   isClosedTemporarily: boolean
 }
 
-export default function PlacesInfoCardDetails({
+export const PlacesInfoCardDetails = ({
   rating,
   isClosedTemporarily,
   isOpenNow,
   icon
-}: Props) {
+}: Props) => {
   const ratingArray = Array.from(new Array(Math.round(rating)))
 
   const errorColor = useThemeColor({}, "error")

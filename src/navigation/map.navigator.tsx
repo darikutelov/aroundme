@@ -6,24 +6,25 @@ import {
 import { PlacesScreen } from "@/src/features/places/screens/places.screen"
 import { PlaceDetailScreen } from "@/src/features/places/screens/place-details.screen"
 import { Place } from "@/src/models/place/place"
+import { MapScreen } from "@/src/features/map/screens/map.screen"
 
-export type PlaceStackParamList = {
-  PlacesList: undefined
+export type MapStackParamList = {
+  MapScreen: undefined
   PlaceDetails: { place: Place }
 }
 
-const PlacesStack = createStackNavigator<PlaceStackParamList>()
+const MapStack = createStackNavigator<MapStackParamList>()
 
-export const PlacesNavigator = () => {
+export const MapNavigator = () => {
   return (
-    <PlacesStack.Navigator
+    <MapStack.Navigator
       screenOptions={{
         headerShown: false,
         ...TransitionPresets.ModalPresentationIOS
       }}
     >
-      <PlacesStack.Screen name='PlacesList' component={PlacesScreen} />
-      <PlacesStack.Screen name='PlaceDetails' component={PlaceDetailScreen} />
-    </PlacesStack.Navigator>
+      <MapStack.Screen name='MapScreen' component={MapScreen} />
+      <MapStack.Screen name='PlaceDetails' component={PlaceDetailScreen} />
+    </MapStack.Navigator>
   )
 }

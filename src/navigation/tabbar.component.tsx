@@ -3,10 +3,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import MaterialIcons from "@expo/vector-icons/MaterialIcons"
 
 import { PlacesNavigator } from "@/src/navigation/places.navigator"
-import { MapScreen } from "@/src/features/map/screens/map.screen"
 import { SettingsScreen } from "@/src/features/settings/screens/settings.screen"
 import { useThemeColor } from "@/src/hooks/useThemeColor"
 import { theme } from "@/src/theme"
+import { MapNavigator } from "./map.navigator"
 
 const TAB_ICONS: { [key: string]: "place" | "map" | "settings" } = {
   Places: "place",
@@ -14,16 +14,17 @@ const TAB_ICONS: { [key: string]: "place" | "map" | "settings" } = {
   Settings: "settings"
 }
 
+const Tab = createBottomTabNavigator()
+
 export const TabBar = () => {
-  const Tab = createBottomTabNavigator()
   const tabBarBackground = useThemeColor({}, "background")
   const iconColor = useThemeColor({}, "icon")
   const iconActiveColor = useThemeColor({}, "tabIconSelected")
 
   return (
     <Tab.Navigator screenOptions={screenOptions}>
-      <Tab.Screen name='Map' component={MapScreen} />
       <Tab.Screen name='Places' component={PlacesNavigator} />
+      <Tab.Screen name='Map' component={MapNavigator} />
       <Tab.Screen name='Settings' component={SettingsScreen} />
     </Tab.Navigator>
   )

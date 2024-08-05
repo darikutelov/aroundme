@@ -11,7 +11,8 @@ export const colors = {
     tabIconSelected: tintColorLight,
     secondarySystemBackground: "#F2F2F7", // .secondarySystemBackground
     error: "#D0421B",
-    primary: "#57CC99"
+    primary: "#57CC99",
+    marker: "#1C3738"
   },
   dark: {
     text: "#ECEDEE",
@@ -22,6 +23,7 @@ export const colors = {
     tabIconSelected: tintColorDark,
     secondarySystemBackground: "#1C1C1E", // .secondarySystemBackground
     error: "#D0421B",
-    primary: "#57CC99"
+    primary: "#57CC99",
+    marker: "#F7E1D7"
   }
 }

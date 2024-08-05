@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { StyleSheet, View } from "react-native"
+import type { NativeStackScreenProps } from "@react-navigation/native-stack"
 import MapView, { Marker, Callout } from "react-native-maps"
 import Entypo from "@expo/vector-icons/Entypo"
 
@@ -7,13 +8,16 @@ import { MapSearch } from "../components/search.component"
 import { useLocationContext } from "@/src/services/location/location.context"
 import { usePlacesContext } from "@/src/services/places/places.context"
 import { MapCallout } from "../components/map-callout.component"
-import { theme } from "@/src/theme"
 import { useThemeColor } from "@/src/hooks/useThemeColor"
+import { MapStackParamList } from "@/src/navigation/map.navigator"
 
-export const MapScreen = () => {
+type Props = NativeStackScreenProps<MapStackParamList, "MapScreen">
+
+export const MapScreen = ({ navigation }: Props) => {
   const { location } = useLocationContext()
   const { places } = usePlacesContext()
   const backgroundColor = useThemeColor({}, "background")
+  const markerColor = useThemeColor({}, "marker")
 
   const { lat, lng, viewport } = location
 
@@ -50,16 +54,17 @@ export const MapScreen = () => {
                 longitude: geometry.location.lng
               }}
             >
-              <Entypo
-                name='pin'
-                size={24}
-                color={theme.colors.light.tabIconSelected}
-              />
+              <Entypo name='pin' size={24} color={markerColor} />
               <Callout
                 tooltip={true}
                 style={{
                   width: 136
                 }}
+                onPress={() =>
+                  navigation.navigate("PlaceDetails", {
+                    place
+                  })
+                }
               >
                 <MapCallout place={place} />
                 <View

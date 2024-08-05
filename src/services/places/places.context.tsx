@@ -23,7 +23,11 @@ const defaultValues: PlacesContextType = {
 
 const PlacesContext = createContext<PlacesContextType>(defaultValues)
 
-export function PlacesContextProvider({ children }: { children: ReactNode }) {
+export const PlacesContextProvider = ({
+  children
+}: {
+  children: ReactNode
+}) => {
   const [places, setPlaces] = useState<Place[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)

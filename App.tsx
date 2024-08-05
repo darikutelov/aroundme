@@ -22,6 +22,7 @@ import { useColorScheme } from "@/src/hooks/useColorScheme"
 import { MD3DarkThemeCustomized, MD3LightThemeCustomized } from "@/src/theme"
 import { PlacesContextProvider } from "./src/services/places/places.context"
 import { LocationContextProvider } from "./src/services/location/location.context"
+import { FavouritesContextProvider } from "./src/services/favourites/favourites.context"
 import { Navigation } from "@/src/navigation"
 
 export default function App() {
@@ -46,11 +47,13 @@ export default function App() {
         <PaperProvider
           theme={isDark ? MD3DarkThemeCustomized : MD3LightThemeCustomized}
         >
-          <LocationContextProvider>
-            <PlacesContextProvider>
-              <Navigation />
-            </PlacesContextProvider>
-          </LocationContextProvider>
+          <FavouritesContextProvider>
+            <LocationContextProvider>
+              <PlacesContextProvider>
+                <Navigation />
+              </PlacesContextProvider>
+            </LocationContextProvider>
+          </FavouritesContextProvider>
         </PaperProvider>
       </ThemeProvider>
       <StatusBar style='auto' />

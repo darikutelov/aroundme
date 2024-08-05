@@ -1,12 +1,15 @@
 import { StyleSheet } from "react-native"
 import { Svg, Image as ImageSvg } from "react-native-svg"
-
 import { Place } from "@/src/models/place/place"
 import { ThemedText } from "../ThemedText"
 import { ThemedView } from "../ThemedView"
 import { theme } from "@/src/theme"
 
-export const CompactPlaceInfo = ({ place }: { place: Place }) => {
+type Props = {
+  place: Place
+}
+
+export const CompactPlaceInfo = ({ place }: Props) => {
   return (
     <ThemedView style={styles.container}>
       <Svg width={120} height={100} style={styles.image}>

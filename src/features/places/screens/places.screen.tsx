@@ -12,6 +12,7 @@ import { PlaceInfoCard } from "../components/place-info-card/places.info.card"
 import { theme } from "@/src/theme"
 import { useColorScheme } from "@/src/hooks/useColorScheme"
 import { usePlacesContext } from "@/src/services/places/places.context"
+import { useFavouritesContext } from "@/src/services/favourites/favourites.context"
 import { Loader } from "@/src/components/loader/loader.component"
 import { Search } from "../components/search.component"
 import { PlaceStackParamList } from "@/src/navigation/places.navigator"
@@ -22,6 +23,8 @@ export const PlacesScreen = ({ navigation }: Props) => {
   const colorScheme = useColorScheme()
   const isDark = colorScheme === "dark"
   const { places, isLoading, error } = usePlacesContext()
+  const { favourites, addToFavourites, removeFromFavourites } =
+    useFavouritesContext()
 
   return (
     <SafeAreaView style={styles(isDark).container}>

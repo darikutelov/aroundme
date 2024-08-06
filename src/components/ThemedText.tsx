@@ -15,13 +15,13 @@ export type ThemedTextProps = TextProps & {
     | "link"
 }
 
-export function ThemedText({
+export const ThemedText = ({
   style,
   lightColor,
   darkColor,
   type = "default",
   ...rest
-}: ThemedTextProps) {
+}: ThemedTextProps) => {
   const color = useThemeColor({ light: lightColor, dark: darkColor }, "text")
 
   return (

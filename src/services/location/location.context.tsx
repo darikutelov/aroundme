@@ -67,7 +67,6 @@ export const LocationContextProvider = ({
     } finally {
       setIsLoading(false)
     }
-    console.log(location)
   }
   return (
     <LocationContext.Provider

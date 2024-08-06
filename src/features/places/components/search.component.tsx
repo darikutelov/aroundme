@@ -6,7 +6,12 @@ import { useLocationContext } from "@/src/services/location/location.context"
 import { theme } from "@/src/theme"
 import { useColorScheme } from "@/src/hooks/useColorScheme"
 
-export const Search = () => {
+type Props = {
+  isFavouritesToggled: boolean
+  onFavoritesToggle: () => void
+}
+
+export const Search = ({ isFavouritesToggled, onFavoritesToggle }: Props) => {
   const { keyword, search } = useLocationContext()
   const [searchKeyword, setSearchKeyword] = useState(keyword)
 
@@ -18,6 +23,8 @@ export const Search = () => {
   return (
     <View style={styles.container}>
       <Searchbar
+        icon={isFavouritesToggled ? "heart" : "heart-outline"}
+        onIconPress={onFavoritesToggle}
         placeholder='Search for a location'
         value={searchKeyword}
         onSubmitEditing={() => {

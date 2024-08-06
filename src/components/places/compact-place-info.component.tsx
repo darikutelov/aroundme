@@ -20,7 +20,12 @@ export const CompactPlaceInfo = ({ place }: Props) => {
           href={{ uri: place.imageUrl }}
         />
       </Svg>
-      <ThemedText type='caption' numberOfLines={3} style={styles.text}>
+      <ThemedText
+        type='caption'
+        numberOfLines={2}
+        ellipsizeMode='tail'
+        style={styles.text}
+      >
         {place.name}
       </ThemedText>
     </ThemedView>
